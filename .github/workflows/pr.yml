@@ -1,0 +1,23 @@
+name: Create Pull Request
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  create-pr:
+    name: Create Pull Request from develop to main
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          branch: develop
+          base: main
+          title: "🔄 Synchronisation develop → main"
+          body: "Pull request générée automatiquement."
